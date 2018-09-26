@@ -3,11 +3,13 @@ var space = require('./space.js');
 var dict = require('dict');
 
 var board = [];
-
 var spaceTypes = dict({
 	"start" : new spaceType("start", 1, "Brown", "", []),
 	"normal" : new spaceType("normal", 1, "Green", "", []),
-	"elbacko" : new spaceType("elbacko", 3, "Red", "", [])
+	"elbacko" : new spaceType("elbacko", 3, "Red", "", []),
+	"wagon" : new spaceType("wagon", 1, "Grey", "", []),
+	"alamo" : new spaceType("alamo", 1, "Brown", "", []),
+	"end" : new spaceType("end", 1, "Brown", "", [])
 });
 
 // lay out the board
