@@ -1,3 +1,4 @@
+var readline = require("readline-sync");
 var spaceType = require('./spaceType.js');
 var space = require('./space.js');
 var dict = require("dict");
@@ -37,4 +38,9 @@ for (var i = 0; i < 77; i++) {
 	}
 	console.log("Space " + i + ": " + newSpace.spaceType.name);
 	board.push(newSpace);
+}
+var playerCount = readline.question("How many players?");
+console.log("");
+for (var p = 1; p <= playerCount; p++) {
+  console.log("Player #" + p);
 }
