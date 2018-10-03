@@ -12,7 +12,6 @@ var spaceTypes = dict({
 	"alamo" : new spaceType("alamo", 1, "Brown", "", []),
 	"end" : new spaceType("end", 3, "Brown", "", [])
 });
-});
 
 // lay out the board
 for (var i = 0; i < 77; i++) {
