@@ -1,5 +1,8 @@
+var readline = require("readline-sync");
+
 var spaceType = require('./spaceType.js');
 var space = require('./space.js');
+var player = require('./player.js');
 var dict = require("dict");
 
 var board = [];
@@ -17,17 +20,17 @@ var spaceTypes = dict({
 
 var board = [];
 // lay out the board
-for (var i = 0; i < 77; i++) {
+for (var i = 0; i <= 77; i++) {
 	var newSpace = new space(i);
 	if (i == 0) {
 		newSpace.spaceType = spaceTypes.get("start");
 	} else if (i == 6 || i == 12 || i == 17 || i == 30 || i == 41 || i == 50 || i == 57 || i == 61 || i == 67 || i == 73) {
 		newSpace.spaceType = spaceTypes.get("elbacko");
-	} else if (i = 21 || i = 25 || i == 36){
-	newSpace.spaceType = spaceTypes.get("wagon");
+	} else if (i == 21 || i == 25 || i == 36){
+	    newSpace.spaceType = spaceTypes.get("wagon");
 	} else if (i == 55) {
 		newSpace.spaceType = spaceTypes.get("alamo");
-	} else if (i == 77){
+	} else if (i == 77) {
 		newSpace.spaceType = spaceTypes.get("end");
 	} else 
 		newSpace.spaceType = spaceTypes.get("normal");
@@ -37,4 +40,10 @@ console.log("Space " + i + ": " + newSpace.spaceType.name);
 	board.push(newSpace);
 }
 
+var playerCount = readline.question("How many players?");
+console.log("");
+for (var p = 1; p <= playerCount; p++) {
+	var newPlayer = new player(p);
+  console.log("Player #" + p);
+}
 
