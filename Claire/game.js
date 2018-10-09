@@ -1,8 +1,8 @@
 var readline = require("readline-sync");
 var spaceType = require('./spaceType.js');
 var space = require('./space.js');
+var player = require('./player.js');
 var dict = require("dict");
-
 var board = [];
 var spaceTypes = dict({
 	"start" : new spaceType("start", 1, "Brown", "", []),
@@ -12,10 +12,9 @@ var spaceTypes = dict({
 	"alamo" : new spaceType("alamo", 1, "Brown", "", []),
 	"end" : new spaceType("end", 3, "Brown", "", [])
 });
-});
 
 // lay out the board
-for (var i = 0; i < 77; i++) {
+for (var i = 0; i <= 77; i++) {
 	var newSpace = new space(i);
 	if (i == 0) {
 		newSpace.spaceType = spaceTypes.get("start");
@@ -42,5 +41,6 @@ for (var i = 0; i < 77; i++) {
 var playerCount = readline.question("How many players?");
 console.log("");
 for (var p = 1; p <= playerCount; p++) {
+	 var newPlayer= new player(i)
   console.log("Player #" + p);
 }
