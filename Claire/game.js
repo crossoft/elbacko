@@ -9,6 +9,22 @@ var bank = {
 	inventory : new dict({})
 };
 
+/************************/
+// Constants
+/************************/
+
+
+const BANK_GOLD_START = 30;
+const BANK_SILVER_START = 75;
+const PLAYER_GOLD_START = 1;
+const PLAYER_SILVER_START = 5;
+
+
+/************************/
+// lay out the board
+/************************/
+
+
 var spaceTypes = dict({
 	"start" : new spaceType("start", 1, "Brown", "", []),
 	"normal" : new spaceType("normal", 1, "Green", "", []),
@@ -43,15 +59,57 @@ for (var i = 0; i <= 77; i++) {
 	console.log("Space " + i + ": " + newSpace.spaceType.name);
 	board.push(newSpace);
 }
-// create the bank
+
+/***************************/
+// loading the bank
+/***************************/
+
+
+bank.inventory.set("gold", BANK_GOLD_START);
+bank.inventory.set("silver", BANK_SILVER_START);
+
+/************************/
+// Creating the Bank
+/************************/
+
+
 bank.inventory.set("silver", 120);
 bank.inventory.set("gold", 35);
+
+/***************************/
+//Ask how many players
+/***************************/
+
 var playerCount = readline.question("How many players?");
 console.log("");
+
+/***************************/
+//Create the Players
+/***************************/
+
+
 for (var p = 1; p <= playerCount; p++) {
-	 var newPlayer= new player(i)
-  console.log("Player #" + p);
-  players.push(newPlayer);
-  newPlayer.inventory.set("gold", 5);
-    newPlayer.inventory.set("silver", 2);
+	var newPlayer= new player(p);
+
+	newPlayer.inventory.set("gold", PLAYER_GOLD_START);
+	newPlayer.inventory.set("silver", PLAYER_SILVER_START);
+
+	console.log("Player #" + p);
+
+	// push adds something to an array
+	players.push(newPlayer);
+}
+
+/************************/
+// Game Loop
+/************************/
+
+var playerPointer = 0;
+
+while (true) {
+	console.log("Player" + players[playerPointer].ordinal + "turn");
+	playerPointer++;
+	if (playerPointer >= playerCount) {
+		playerPointer = 0;
+	}
 }
