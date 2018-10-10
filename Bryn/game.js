@@ -7,6 +7,8 @@ var dict = require("dict");
 var players = [];
 var board = [];
 
+// creating space types
+
 var spaceTypes = dict({
 	"start" : new spaceType("start", 1, "Brown", "", []),
 	"normal" : new spaceType("normal", 1, "Green", "", []),
@@ -19,6 +21,13 @@ var spaceTypes = dict({
 var bank = {
 	inventory : new dict({})
 };
+
+//creating constants
+
+const BANK_GOLD_START = 50;
+const BANK_SILVER_START = 30;
+const PLAYER_GOLD_START = 1;
+const PLAYER_SILVER_START = 5;
 
 
 /****************************/
@@ -50,8 +59,9 @@ for (var i = 0; i <= 77; i++) {
 /****************************/
 // loading the bank
 /****************************/
-bank.inventory.set("silver", 120);
-bank.inventory.set("gold", 35);
+bank.inventory.set("silver", BANK_SILVER_START);
+bank.inventory.set("gold", BANK_GOLD_START);
+
 
 
 /****************************/
@@ -61,7 +71,7 @@ bank.inventory.set("gold", 35);
 var playerCount = readline.question("How many players?");
 console.log("");
 
-/****************************/
+//
 // Create the players
 //
 
@@ -69,11 +79,28 @@ for (var p = 1; p <= playerCount; p++) {
 
 	var newPlayer = new player(p);
 
-	newPlayer.inventory.set("gold", 1);
-	newPlayer.inventory.set("silver", 5);
+	newPlayer.inventory.set("gold", PLAYER_GOLD_START);
+	newPlayer.inventory.set("silver", PLAYER_SILVER_START);
 
 	console.log("Player #" + p);
 	// push adds something to an array
 	players.push(newPlayer);
 }
 
+
+// GAME LOOP! //
+
+var playerPointer = 0;
+
+while (true) {
+	console.log("Player " + players[playerPointer].ordinal + "turn");
+// console.log prints out a line 
+	playerPointer++;
+	if (playerPointer>= playerCount) { 
+		playerPointer = 0;
+	}
+}
+
+// ++ means add one to it	
+// console.log is an action that prints things out (?)
+// {} are a group of actions or things
