@@ -3,7 +3,12 @@ var spaceType = require('./spaceType.js');
 var space = require('./space.js');
 var player = require('./player.js');
 var dict = require("dict");
+var players = []; 
 var board = [];
+var bank = {
+	inventory : new dict({})
+};
+
 var spaceTypes = dict({
 	"start" : new spaceType("start", 1, "Brown", "", []),
 	"normal" : new spaceType("normal", 1, "Green", "", []),
@@ -38,9 +43,15 @@ for (var i = 0; i <= 77; i++) {
 	console.log("Space " + i + ": " + newSpace.spaceType.name);
 	board.push(newSpace);
 }
+// create the bank
+bank.inventory.set("silver", 120);
+bank.inventory.set("gold", 35);
 var playerCount = readline.question("How many players?");
 console.log("");
 for (var p = 1; p <= playerCount; p++) {
 	 var newPlayer= new player(i)
   console.log("Player #" + p);
+  players.push(newPlayer);
+  newPlayer.inventory.set("gold", 5);
+    newPlayer.inventory.set("silver", 2);
 }
