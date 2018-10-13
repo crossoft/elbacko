@@ -8,6 +8,23 @@ var board = [];
 var bank = {
 	inventory : new dict({})
 };
+/************************/
+//Roll Dice
+/************************/
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+while(true) {
+	rollDice();
+function rollDice() {
+	getRandomInt (max - min +1)
+
+}}
+function rollDice() {
+    console.log("Hello Dice. roll world!");
+}
+
 
 /************************/
 // Constants
