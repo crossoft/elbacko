@@ -4,6 +4,19 @@ var space = require('./space.js');
 var player = require('./player.js');
 var dict = require("dict");
 
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function rollDice() {
+
+	console.log("Dice rolled! :)")
+	
+	return [getRandomInt(1, 6), getRandomInt(1, 6)];
+
+	console.log(getRandomInt(1, 6));
+}
+
 var players = [];
 var board = [];
 
@@ -93,6 +106,9 @@ for (var p = 1; p <= playerCount; p++) {
 var playerPointer = 0;
 
 while (true) {
+
+	rollDice();
+
 	console.log("Player " + players[playerPointer].ordinal + "turn");
 // console.log prints out a line 
 	playerPointer++;
