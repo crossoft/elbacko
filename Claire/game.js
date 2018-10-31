@@ -8,23 +8,18 @@ var board = [];
 var bank = {
 	inventory : new dict({})
 };
+
 /************************/
-//Roll Dice
+// Roll Dice
 /************************/
 
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-while(true) {
-	rollDice();
-function rollDice() {
-	getRandomInt (max - min +1)
 
-}}
 function rollDice() {
-    console.log("Hello Dice. roll world!");
+	return [getRandomInt(1,6), getRandomInt(1,6)];
 }
-
 
 /************************/
 // Constants
@@ -124,6 +119,8 @@ for (var p = 1; p <= playerCount; p++) {
 var playerPointer = 0;
 
 while (true) {
+	var roll = rollDice();
+	console.log("Rolled: " + roll[0] + ", " + roll[1]);
 	console.log("Player" + players[playerPointer].ordinal + "turn");
 	playerPointer++;
 	if (playerPointer >= playerCount) {
