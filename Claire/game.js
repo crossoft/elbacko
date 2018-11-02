@@ -28,7 +28,7 @@ function rollDice() {
 function isGameOver(false); {
 	var isOver(false);
 	players.forEach(p => { if (board[p.space].spaceType.name == "end") isOver = true; });	
-	return isOver(); 
+	return var isOver(); 
 }
 
 
@@ -131,7 +131,7 @@ for (var p = 1; p <= playerCount; p++) {
 
 var playerPointer = 0;
 
-while isGameOver() {
+while (isGameOver()) {
 	var roll = rollDice();
 	console.log("Rolled: " + roll[0] + ", " + roll[1]);
 	console.log("Player" + players[playerPointer].ordinal + "turn");
