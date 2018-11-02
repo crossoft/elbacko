@@ -22,12 +22,24 @@ function rollDice() {
 }
 
 /************************/
+// Game Loop Over
+/************************/
+
+function isGameOver(false); {
+	var isOver(false);
+	players.forEach(p => { if (board[p.space].spaceType.name == "end") isOver = true; });	
+	return isOver(); 
+}
+
+
+/************************/
 // Constants
 /************************/
 
+
 const BANK_GOLD_START = 30;
 const BANK_SILVER_START = 75;
-const PLAYER_GOLD_START = 1;s
+const PLAYER_GOLD_START = 1;
 const PLAYER_SILVER_START = 5;
 
 
@@ -45,7 +57,9 @@ var spaceTypes = dict({
 	"end" : new spaceType("end", 3, "Brown", "", [])
 });
 
-// lay out the board
+
+
+
 for (var i = 0; i <= 77; i++) {
 	var newSpace = new space(i);
 	if (i == 0) {
@@ -117,7 +131,7 @@ for (var p = 1; p <= playerCount; p++) {
 
 var playerPointer = 0;
 
-while (true) {
+while isGameOver() {
 	var roll = rollDice();
 	console.log("Rolled: " + roll[0] + ", " + roll[1]);
 	console.log("Player" + players[playerPointer].ordinal + "turn");
