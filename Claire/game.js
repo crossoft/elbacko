@@ -25,10 +25,10 @@ function rollDice() {
 // Game Loop Over
 /************************/
 
-function isGameOver(false); {
-	var isOver(false);
+function isGameOver() {
+	var isOver = false;
 	players.forEach(p => { if (board[p.space].spaceType.name == "end") isOver = true; });	
-	return var isOver(); 
+	return isOver(); 
 }
 
 
