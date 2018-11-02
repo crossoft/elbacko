@@ -8,10 +8,14 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function isGameOver() {
+	return false 
+}
+
 function rollDice() {
 
 	console.log("Dice rolled! :)")
-	
+
 	return [getRandomInt(1, 6), getRandomInt(1, 6)];
 
 	console.log(getRandomInt(1, 6));
@@ -105,7 +109,7 @@ for (var p = 1; p <= playerCount; p++) {
 
 var playerPointer = 0;
 
-while (true) {
+while (isGameOver()) {
 
 	rollDice();
 
