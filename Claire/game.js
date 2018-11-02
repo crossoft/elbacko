@@ -25,10 +25,9 @@ function rollDice() {
 // Constants
 /************************/
 
-
 const BANK_GOLD_START = 30;
 const BANK_SILVER_START = 75;
-const PLAYER_GOLD_START = 1;
+const PLAYER_GOLD_START = 1;s
 const PLAYER_SILVER_START = 5;
 
 
