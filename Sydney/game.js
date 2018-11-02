@@ -9,6 +9,20 @@ var bank = {
 	inventory : new dict({})
 };
 
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function rollDice() {
+	return [ getRandomInt(1, 6), getRandomInt(1, 6) ];
+}
+
+
+const BANK_GOLD_START = 50;
+const BANK_SILVER_START = 78;
+const PLAYER_GOLD_START = 1;
+const PLAYER_SILVER_START = 5;
+
 var spaceTypes = dict({
 	"start" : new spaceType("start", 1, "Brown", "", []),
 	"normal" : new spaceType("normal", 1, "Green", "", []),
@@ -33,9 +47,9 @@ for (var i = 0; i < 10; i++) {
 }
 
 // create the bank
-bank.inventory.set("silver", 120);
+bank.inventory.set("silver", BANK_SILVER_START);
 // create the bank
-bank.inventory.set("gold", 35);
+bank.inventory.set("gold", BANK_GOLD_START);
 
 
 var playerCount = readline.question("How many players?");
@@ -43,7 +57,19 @@ console.log("");
 for (var p = 1; p <= playerCount; p++) {
 	var newPlayer = new player(p);
     console.log("Player #" + p);
+	newPlayer.inventory.set("gold", PLAYER_GOLD_START);
+	newPlayer.inventory.set("silver",PLAYER_SILVER_START);
+	players.push(newPlayer);
+}
 
-players.push(newPlayer);}
-newPlayer.inventory.set("gold", 5);
-newPlayer.inventory.set("silver", 2);
+var playerPointer = 0;
+
+while (true) {
+	var roll = rollDice();
+	console.log("I just rolled " + roll[0] + " and " + roll[1]);
+	console.log("Player " + players[playerPointer].ordinal + " turn");
+	playerPointer++;
+	if (playerPointer >= playerCount) {
+		playerPointer = 0;
+	}
+}
