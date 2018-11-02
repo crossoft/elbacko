@@ -21,13 +21,25 @@ var bank = {
 };
 
 /****************************/
-// constants
+// Constants
 /****************************/
 
 const BANK_GOLD_START = 20;
 const BANK_SILVER_START = 35;
 const PLAYER_GOLD_START = 1;
 const PLAYER_SILVER_START = 5;
+
+/************************/
+// Roll Dice
+/************************/
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function rollDice() {
+	return [getRandomInt(1,6), getRandomInt(1,6)];
+}
 
 
 /****************************/
@@ -94,10 +106,11 @@ for (var p = 1; p <= playerCount; p++) {
 var playerPointer = 0;
 
 while (true) {
+	var roll = rollDice();
+	console.log("Rolled: " + roll[0] + ", " + roll[1]);
 	console.log("Player " + players[playerPointer].ordinal + " turn");
 	playerPointer++;
 	if (playerPointer >= playerCount) {
 		playerPointer = 0;
 	}
 }
-
