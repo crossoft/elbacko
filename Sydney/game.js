@@ -16,7 +16,11 @@ function getRandomInt(min, max) {
 function rollDice() {
 	return [ getRandomInt(1, 6), getRandomInt(1, 6) ];
 }
-
+function isGameOver() {
+	var  isOver = isOver;
+	players.forEach(p => { if (board[p.space].spaceType.name == "end") isOver = true; });	
+	return isOver ;
+}
 
 const BANK_GOLD_START = 50;
 const BANK_SILVER_START = 78;
@@ -62,9 +66,9 @@ for (var p = 1; p <= playerCount; p++) {
 	players.push(newPlayer);
 }
 
-var playerPointer = 0;
+var playerPointer = 0; 
 
-while (true) {
+while (!isGameOver()) {
 	var roll = rollDice();
 	console.log("I just rolled " + roll[0] + " and " + roll[1]);
 	console.log("Player " + players[playerPointer].ordinal + " turn");
