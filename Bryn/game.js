@@ -4,12 +4,21 @@ var space = require('./space.js');
 var player = require('./player.js');
 var dict = require("dict");
 
+//  
+//FUNCTIONS of the game
+//
+
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function isGameOver() {
-	return false 
+	var isOver = false; 
+	players.forEach(p => { if (board[p.space].spaceType.name == "end") isOver = true; });
+	if(players.Length == 1){
+		isOver = true;
+	}
+	return isOver;
 }
 
 function rollDice() {
@@ -21,6 +30,15 @@ function rollDice() {
 	console.log(getRandomInt(1, 6));
 }
 
+function addPlayerMoneyRound(player) {
+	player.inventory.set("silver", player.inventory.get 
+	("silver", 0) + 1);
+
+console.log(player.inventory.get("silver", 0) + " silver coins");
+
+}
+
+//variables
 var players = [];
 var board = [];
 
@@ -88,9 +106,7 @@ bank.inventory.set("gold", BANK_GOLD_START);
 var playerCount = readline.question("How many players?");
 console.log("");
 
-//
 // Create the players
-//
 
 for (var p = 1; p <= playerCount; p++) {
 
@@ -104,21 +120,26 @@ for (var p = 1; p <= playerCount; p++) {
 	players.push(newPlayer);
 }
 
+var playerPointer = 0;
 
 // GAME LOOP! //
 
-var playerPointer = 0;
+while (!isGameOver()) {
 
-while (isGameOver()) {
+	var currentPlayer = players[playerPointer]
 
 	rollDice();
 
 	console.log("Player " + players[playerPointer].ordinal + "turn");
+
 // console.log prints out a line 
+
 	playerPointer++;
 	if (playerPointer>= playerCount) { 
 		playerPointer = 0;
 	}
+
+	addPlayerMoneyRound (currentPlayer);
 }
 
 // ++ means add one to it	
