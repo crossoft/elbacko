@@ -22,6 +22,10 @@ function isGameOver() {
 	return isOver ;
 }
 
+function addPlayerMoneyRound(player) {
+	player.inventory.set("silver", player.inventory.get("silver",0) + 1);
+}
+
 const BANK_GOLD_START = 50;
 const BANK_SILVER_START = 78;
 const PLAYER_GOLD_START = 1;
@@ -66,14 +70,18 @@ for (var p = 1; p <= playerCount; p++) {
 	players.push(newPlayer);
 }
 
-var playerPointer = 0; 
+var playerPointer = 0;
+
 
 while (!isGameOver()) {
+	var currentPlayer = players[playerPointer];
 	var roll = rollDice();
 	console.log("I just rolled " + roll[0] + " and " + roll[1]);
 	console.log("Player " + players[playerPointer].ordinal + " turn");
 	playerPointer++;
 	if (playerPointer >= playerCount) {
 		playerPointer = 0;
-	}
+	} 
+	addPlayerMoneyRound(currentPlayer);
+	console.log(currentPlayer.inventory.get("silver", 0) + " silver coins");
 }
