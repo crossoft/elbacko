@@ -10,6 +10,17 @@ var bank = {
 };
 
 /************************/
+// Adding Money to Player Inventory
+/************************/
+
+function addPlayerMoneyRound(player)  {
+player.inventory.set("silver", player.inventory.get("silver",0) +1);
+	
+
+}
+
+
+/************************/
 // Roll Dice
 /************************/
 
@@ -49,12 +60,12 @@ const PLAYER_SILVER_START = 5;
 
 
 var spaceTypes = dict({
-	"start" : new spaceType("start", 1, "Brown", "", []),
+	"start"  : new spaceType("start", 1, "Brown", "", []),
 	"normal" : new spaceType("normal", 1, "Green", "", []),
-	"elbacko" : new spaceType("elbacko", 3, "Red", "", []),
-	"wagon" : new spaceType("wagon", 1, "Mauve", "", []),
-	"alamo" : new spaceType("alamo", 1, "Brown", "", []),
-	"end" : new spaceType("end", 3, "Brown", "", [])
+	"elbacko": new spaceType("elbacko", 3, "Red", "", []),
+	"wagon"  : new spaceType("wagon", 1, "Mauve", "", []),
+	"alamo"  : new spaceType("alamo", 1, "Brown", "", []),
+	"end"    : new spaceType("end", 3, "Brown", "", [])
 });
 
 
@@ -132,11 +143,14 @@ for (var p = 1; p <= playerCount; p++) {
 var playerPointer = 0;
 
 while (!isGameOver()) {
+	var currentPlayer = players[playerPointer]
 	var roll = rollDice();
 	console.log("Rolled: " + roll[0] + ", " + roll[1]);
 	console.log("Player" + players[playerPointer].ordinal + "turn");
 	playerPointer++;
 	if (playerPointer >= playerCount) {
-		playerPointer = 0;
-	}
+		playerPointer = 0;}
+	      addPlayerMoneyRound(currentPlayer);
+	      console.log(" You now have...calculating... " + currentPlayer.inventory.get("silver",0) +" silver coins!");
+	
 }
