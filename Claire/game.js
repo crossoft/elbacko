@@ -112,6 +112,27 @@ bank.inventory.set("silver", BANK_SILVER_START);
 bank.inventory.set("silver", 120);
 bank.inventory.set("gold", 35);
 
+
+
+/************************/
+// Adding Money
+/************************/
+
+function addPlayerMoney(player) {
+	
+}
+function addPlayerMoney(type) {
+	function addPlayerMoney(player,amount,type){
+		var PLAYER_SILVER_CURRENT + 1	
+	}
+	var PLAYER_GOLD_CURRENT
+	var PLAYER_SILVER_CURRENT
+	player.inventory.set(type, player.inventory.get(type, 0) + amount);
+}
+function addPlayerMoney(amount) {
+	
+}
+
 /***************************/
 //Ask how many players
 /***************************/
