@@ -9,14 +9,19 @@ var bank = {
 	inventory : new dict({})
 };
 
+
 /************************/
-// Adding Money to Player Inventory
+// Adding Money
 /************************/
 
-function addPlayerMoneyRound(player)  {
-player.inventory.set("silver", player.inventory.get("silver",0) +1);
 	
 
+function addPlayerMoneyRound(player)  {
+	addPlayerMoney(player,"silver",SILVER_PER_ROUND)
+}
+
+function addPlayerMoney(player,type,amount){
+	player.inventory.set(type, player.inventory.get(type, 0) + amount);
 }
 
 
@@ -52,6 +57,7 @@ const BANK_GOLD_START = 30;
 const BANK_SILVER_START = 75;
 const PLAYER_GOLD_START = 1;
 const PLAYER_SILVER_START = 5;
+const SILVER_PER_ROUND = 1;
 
 
 /************************/
@@ -114,24 +120,7 @@ bank.inventory.set("gold", 35);
 
 
 
-/************************/
-// Adding Money
-/************************/
 
-function addPlayerMoney(player) {
-	
-}
-function addPlayerMoney(type) {
-	function addPlayerMoney(player,amount,type){
-		var PLAYER_SILVER_CURRENT + 1	
-	}
-	var PLAYER_GOLD_CURRENT
-	var PLAYER_SILVER_CURRENT
-	player.inventory.set(type, player.inventory.get(type, 0) + amount);
-}
-function addPlayerMoney(amount) {
-	
-}
 
 /***************************/
 //Ask how many players
