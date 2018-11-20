@@ -16,6 +16,7 @@ function getRandomInt(min, max) {
 function rollDice() {
 	return [ getRandomInt(1, 6), getRandomInt(1, 6) ];
 }
+
 function isGameOver() {
 	var  isOver = isOver;
 	players.forEach(p => { if (board[p.space].spaceType.name == "end") isOver = true; });	
@@ -56,12 +57,11 @@ for (var i = 0; i < 10; i++) {
 
 // create the bank
 bank.inventory.set("silver", BANK_SILVER_START);
-// create the bank
 bank.inventory.set("gold", BANK_GOLD_START);
-
 
 var playerCount = readline.question("How many players?");
 console.log("");
+
 for (var p = 1; p <= playerCount; p++) {
 	var newPlayer = new player(p);
     console.log("Player #" + p);
@@ -71,7 +71,6 @@ for (var p = 1; p <= playerCount; p++) {
 }
 
 var playerPointer = 0;
-
 
 while (!isGameOver()) {
 	var currentPlayer = players[playerPointer];
