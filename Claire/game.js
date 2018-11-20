@@ -9,6 +9,25 @@ var bank = {
 	inventory : new dict({})
 };
 
+/************************/
+// Inventory
+/************************/
+ 
+function outputCurrentInventory(player, description) {		
+	console.log("Player #" + player.ordinal + " has " + player.inventory.get("silver",0) + " silver coins");
+///  console.log(" You now have...calculating... " + currentPlayer.inventory.get("silver",0) +" silver coins!");
+}
+
+/************************/
+// Back to Start
+/************************/
+
+function backToStart(player){
+	console.log("BACK TO START :P!!");
+	player.space = START_SPACE;
+}
+
+
 
 /************************/
 // Adding Money
@@ -58,7 +77,7 @@ const BANK_SILVER_START = 75;
 const PLAYER_GOLD_START = 1;
 const PLAYER_SILVER_START = 5;
 const SILVER_PER_ROUND = 1;
-
+const START_SPACE = 0
 
 /************************/
 // lay out the board
@@ -161,6 +180,6 @@ while (!isGameOver()) {
 	if (playerPointer >= playerCount) {
 		playerPointer = 0;}
 	      addPlayerMoneyRound(currentPlayer);
-	      console.log(" You now have...calculating... " + currentPlayer.inventory.get("silver",0) +" silver coins!");
+	      outputCurrentInventory(currentPlayer);
 	
 }
