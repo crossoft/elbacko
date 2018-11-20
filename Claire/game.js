@@ -10,13 +10,37 @@ var bank = {
 };
 
 /************************/
-// Adding Money to Player Inventory
+// Inventory
+/************************/
+ 
+function outputCurrentInventory(player, description) {		
+	console.log("Player #" + player.ordinal + " has " + player.inventory.get("silver",0) + " silver coins");
+///  console.log(" You now have...calculating... " + currentPlayer.inventory.get("silver",0) +" silver coins!");
+}
+
+/************************/
+// Back to Start
 /************************/
 
-function addPlayerMoneyRound(player)  {
-player.inventory.set("silver", player.inventory.get("silver",0) +1);
+function backToStart(player){
+	console.log("BACK TO START :P!!");
+	player.space = START_SPACE;
+}
+
+
+
+/************************/
+// Adding Money
+/************************/
+
 	
 
+function addPlayerMoneyRound(player)  {
+	addPlayerMoney(player,"silver",SILVER_PER_ROUND)
+}
+
+function addPlayerMoney(player,type,amount){
+	player.inventory.set(type, player.inventory.get(type, 0) + amount);
 }
 
 
@@ -52,7 +76,8 @@ const BANK_GOLD_START = 30;
 const BANK_SILVER_START = 75;
 const PLAYER_GOLD_START = 1;
 const PLAYER_SILVER_START = 5;
-
+const SILVER_PER_ROUND = 1;
+const START_SPACE = 0
 
 /************************/
 // lay out the board
@@ -114,24 +139,7 @@ bank.inventory.set("gold", 35);
 
 
 
-/************************/
-// Adding Money
-/************************/
 
-function addPlayerMoney(player) {
-	
-}
-function addPlayerMoney(type) {
-	function addPlayerMoney(player,amount,type){
-		var PLAYER_SILVER_CURRENT + 1	
-	}
-	var PLAYER_GOLD_CURRENT
-	var PLAYER_SILVER_CURRENT
-	player.inventory.set(type, player.inventory.get(type, 0) + amount);
-}
-function addPlayerMoney(amount) {
-	
-}
 
 /***************************/
 //Ask how many players
@@ -172,6 +180,6 @@ while (!isGameOver()) {
 	if (playerPointer >= playerCount) {
 		playerPointer = 0;}
 	      addPlayerMoneyRound(currentPlayer);
-	      console.log(" You now have...calculating... " + currentPlayer.inventory.get("silver",0) +" silver coins!");
+	      outputCurrentInventory(currentPlayer);
 	
 }
