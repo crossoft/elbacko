@@ -46,8 +46,13 @@ function addPlayerMoney(player,type,amount){
 /************************/
 // Player Move
 /************************/
-function handlePlayerMove(player,number) {
-	player.space += number; 
+function handlePlayerMove(player,number, isRelative) {
+	isRelative = isRelative|| true;
+		if (isRelative) {
+		player.space += number;	}
+			else {player.space = number}
+
+	//if spacetype.get = elbacko + player.inventory.get(silver  < 4 ) handlePlayerMove = currentPlayer.spacetype = start );
 }
 
 
@@ -185,14 +190,16 @@ while (!isGameOver()) {
 	console.log("Rolled: " + roll[0] + ", " + roll[1]);
 	console.log("Player" + players[playerPointer].ordinal + "turn");
 
-	handlePlayerMove(currentPlayer, roll[0] + roll[1]);
+	handlePlayerMove(currentPlayer, roll[0] + roll[1],       );
+
+	addPlayerMoneyRound(currentPlayer);
+	outputCurrentInventory(currentPlayer);
 
 	playerPointer++;
 	if (playerPointer >= playerCount) {
 		playerPointer = 0;
 	}
 
-	addPlayerMoneyRound(currentPlayer);
-	outputCurrentInventory(currentPlayer);
+
 	
 }
