@@ -43,6 +43,14 @@ function addPlayerMoney(player,type,amount){
 	player.inventory.set(type, player.inventory.get(type, 0) + amount);
 }
 
+/************************/
+// Player Move
+/************************/
+function handlePlayerMove(player,number) {
+	player.space += number; 
+}
+
+
 
 /************************/
 // Roll Dice
@@ -172,14 +180,19 @@ for (var p = 1; p <= playerCount; p++) {
 var playerPointer = 0;
 
 while (!isGameOver()) {
-	var currentPlayer = players[playerPointer]
+	var currentPlayer = players[playerPointer];
 	var roll = rollDice();
 	console.log("Rolled: " + roll[0] + ", " + roll[1]);
 	console.log("Player" + players[playerPointer].ordinal + "turn");
+
+	handlePlayerMove(currentPlayer, roll[0] + roll[1]);
+
 	playerPointer++;
 	if (playerPointer >= playerCount) {
-		playerPointer = 0;}
-	      addPlayerMoneyRound(currentPlayer);
-	      outputCurrentInventory(currentPlayer);
+		playerPointer = 0;
+	}
+
+	addPlayerMoneyRound(currentPlayer);
+	outputCurrentInventory(currentPlayer);
 	
 }
