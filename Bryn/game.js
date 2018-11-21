@@ -1,3 +1,7 @@
+//
+//creating variables.
+//
+
 var readline = require("readline-sync");
 var spaceType = require('./spaceType.js');
 var space = require('./space.js');
@@ -31,11 +35,26 @@ function rollDice() {
 }
 
 function addPlayerMoneyRound(player) {
-	player.inventory.set("silver", player.inventory.get 
-	("silver", 0) + 1);
-
+	addPlayerMoney(player, "silver", SILVER_PER_ROUND);
+	
 console.log(player.inventory.get("silver", 0) + " silver coins");
 
+}
+
+function addPlayerMoney(player, type, amount){
+	player.inventory.set(type, player.inventory.get(type, 0) + amount);
+}
+
+function outputCurrentInventory (player, description){
+	console.log("Player " + player.ordinal + ": " + player.inventory.get("silver", 0) + " silver coins.");
+}
+
+function backToStart(spaceType){
+	console.log("BACK TO START!")
+}
+
+function handlePlayerMove (player, number){
+   	* spaceType + 1 *
 }
 
 //variables
@@ -63,6 +82,7 @@ const BANK_GOLD_START = 50;
 const BANK_SILVER_START = 30;
 const PLAYER_GOLD_START = 1;
 const PLAYER_SILVER_START = 5;
+const SILVER_PER_ROUND = 1;
 
 
 /****************************/
@@ -140,6 +160,9 @@ while (!isGameOver()) {
 	}
 
 	addPlayerMoneyRound (currentPlayer);
+
+	outputCurrentInventory(currentPlayer);
+
 }
 
 // ++ means add one to it	
