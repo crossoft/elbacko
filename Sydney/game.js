@@ -27,10 +27,28 @@ function addPlayerMoneyRound(player) {
 	player.inventory.set("silver", player.inventory.get("silver",0) + 1);
 }
 
+function outputCurrentInventory(player, description) {
+	console.log("player #" + player.ordinal +
+		" has " + 
+		player.inventory.get("silver",0) +
+		" silver coins "
+		);
+	//console.log(currentPlayer.inventory.get("silver", 0) + " silver coins");
+}
+
+function backToStart(player){
+	console.log("BACK TO START!!!");
+	player.space = 0
+}
+
+function playerpointer()
+
+
 const BANK_GOLD_START = 50;
 const BANK_SILVER_START = 78;
 const PLAYER_GOLD_START = 1;
 const PLAYER_SILVER_START = 5;
+const START_SPACE = 0   
 
 var spaceTypes = dict({
 	"start" : new spaceType("start", 1, "Brown", "", []),
@@ -81,6 +99,7 @@ while (!isGameOver()) {
 	if (playerPointer >= playerCount) {
 		playerPointer = 0;
 	} 
-	addPlayerMoneyRound(currentPlayer);
-	console.log(currentPlayer.inventory.get("silver", 0) + " silver coins");
+	addPlayerMoneyRound(currentPlayer);  
+  outputCurrentInventory(currentPlayer);
 }
+	
