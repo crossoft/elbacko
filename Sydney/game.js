@@ -96,6 +96,12 @@ while (!isGameOver()) {
 	var roll = rollDice();
 	console.log("I just rolled " + roll[0] + " and " + roll[1]);
 	console.log("Player " + players[playerPointer].ordinal + " turn");
+	handlePlayerMove(player,number
+		player.space += number;
+		{
+		}
+		}
+	handlePlayerMove(currentPlayer,
 	playerPointer++;
 	if (playerPointer >= playerCount) {
 		playerPointer = 0;
