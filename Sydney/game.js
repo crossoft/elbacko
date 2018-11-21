@@ -41,7 +41,8 @@ function backToStart(player){
 	player.space = 0
 }
 
-function playerpointer()
+function handlePlayerMove(player)
+
 
 
 const BANK_GOLD_START = 50;
@@ -102,4 +103,6 @@ while (!isGameOver()) {
 	addPlayerMoneyRound(currentPlayer);  
   outputCurrentInventory(currentPlayer);
 }
+	newmethod handlePlayerMove howmuchtheyrollednumber newmethod
 	
+player.space
