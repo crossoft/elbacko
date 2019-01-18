@@ -53,15 +53,23 @@ function backToStart(spaceType){
 	console.log("BACK TO START!")
 }
 
-function handlePlayerMove (player, number){
-   	* spaceType + 1 *
-}
+// bum bum bum......
+
+function handlePlayerMove (player, number, isRelative){
+   	player.space += number; 
+   	isRelative =  isRelative || true;
+   	is(isRelative) {
+   		player.space += number;
+   	} else {
+   		player.space = number 
+   	}
+  }
 
 //variables
 var players = [];
 var board = [];
 
-// creating space types
+// creating SPACE TYPES 
 
 var spaceTypes = dict({
 	"start" : new spaceType("start", 1, "Brown", "", []),
@@ -76,7 +84,7 @@ var bank = {
 	inventory : new dict({})
 };
 
-//creating constants
+//creating CONSTANTS
 
 const BANK_GOLD_START = 50;
 const BANK_SILVER_START = 30;
@@ -148,21 +156,22 @@ while (!isGameOver()) {
 
 	var currentPlayer = players[playerPointer]
 
-	rollDice();
+	var roll = rollDice();
 
 	console.log("Player " + players[playerPointer].ordinal + "turn");
 
-// console.log prints out a line 
+	handlePlayerMove(currentPlayer, roll[0] + roll[1]);
 
-	playerPointer++;
-	if (playerPointer>= playerCount) { 
-		playerPointer = 0;
-	}
+// console.log prints out a line 
 
 	addPlayerMoneyRound (currentPlayer);
 
 	outputCurrentInventory(currentPlayer);
 
+	playerPointer++;
+	if (playerPointer>= playerCount) { 
+		playerPointer = 0;
+	}
 }
 
 // ++ means add one to it	
